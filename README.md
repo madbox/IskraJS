@@ -1,3 +1,3 @@
 # IskraJS
-Messing arround with TroykaJS
+Messing arround with IskraJS (Espruino)
 
