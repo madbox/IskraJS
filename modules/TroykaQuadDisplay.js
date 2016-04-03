@@ -8,6 +8,9 @@
 Usage:
 
 '''
+var myQuad = require('TroykaQuadDisplay').connect(P8); // quad Display Pin
+myQuad.displayDigits(1,2,3,4);
+myQuad.displayTemperatureC(26);
 '''
 */
 
