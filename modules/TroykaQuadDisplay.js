@@ -1,8 +1,8 @@
 /*
-Модуль для работы с http://amperka.ru/product/troyka-rtc
+Модуль для работы с http://amperka.ru/product/troyka-quad-display
 Принцип работы со сдвиговым регистром через 1 сигнальный канал
 описан тут: http://www.romanblack.com/shift1.htm
-длительности импульсов отсюда https://github.com/amperka/QuadDisplay/blob/master/QuadDisplay.cpp 
+длительности импульсов отсюда https://github.com/amperka/QuadDisplay/blob/master/QuadDisplay.cpp
 
 
 Usage:
@@ -109,7 +109,7 @@ TroykaQuadDisplay.prototype.displayTemperatureC = function(val){
                       'degree');
 }
 
-// Create an instance of TroykaQuadDisplay 
+// Create an instance of TroykaQuadDisplay
 exports.connect = function(pin) {
   return new TroykaQuadDisplay(pin);
 };
