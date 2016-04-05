@@ -28,36 +28,25 @@ function updateTime() {
                        Math.floor(minutes/10), minutes % 10);
 }
 
-setInterval(updateTime, 1000);
+updateTime();
 
 // ----------------------
 // Барометр
 print("Initializing barometer");
-
 var baro = require('@amperka/barometer').connect(PrimaryI2C);
-
 baro.init();
-print(baro.read());
-print(baro.read('Pa'));
-print(baro.read('mmHg'));
- 
-print(baro.temperature());
-print(baro.temperature('C'));
 
 // ----------------------
 // Акселерометр
 print("Initializing accelerometer");
-
-// Подключаем модуль
 var accel = require('@amperka/accelerometer').connect(PrimaryI2C);
- 
-// Инициализируем модуль
 accel.init();
 
 //setInterval(function(){
   // Отображаем силы, действующие на акселерометр
-  print(accel.read('G'));
+//  print(accel.read('G'));
 //}, 500);
+
 
 // шорткаты для вызова функций из консоли
 Object.rtc = rtc;
@@ -65,6 +54,18 @@ Object.accel = accel;
 Object.baro = baro;
 Object.myQuad = myQuad;
 
+var showTimeFlag = true;
+setInterval(function(){
+  if (showTimeFlag) {
+    updateTime();
+  } else {
+    myQuad.displayTemperatureC(baro.temperature('C'));
+  }
+  showTimeFlag = !showTimeFlag;
+}, 2000);
+
+
+/*
 interval1 = setInterval(function(){
   print("Repeat!");
   print(accel.read('G'));
@@ -74,3 +75,4 @@ setTimeout(function(){
   clearInterval(interval1);
   print("Stop!");
 }, 5000);
+*/
