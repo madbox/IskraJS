@@ -91,11 +91,16 @@ TroykaQuadDisplay.prototype.displayDigits = function(a, b, c, d){
   setTimeout(digitalPulse, 1, pin, 0, lengths);
 };
 
-/* TODO
-TroykaQuadDisplay.prototype.displayInt = function(val, padZeros, dots){
-
+TroykaQuadDisplay.prototype.displayInt = function(val){
+    // На случай, если на вход выдали не целое
+    var v = Math.round(val);
+    this.displayDigits( Math.floor(v/1000)>0 ? Math.floor(v/1000) : ' ',
+                        Math.floor(v/100)>0 ? Math.floor(v/100) : ' ',
+                        Math.floor(v/10),
+                        v % 10 );
 }
 
+/* TODO
 TroykaQuadDisplay.prototype.displayFloat = function(val, precision, padZeros){
 
 }
